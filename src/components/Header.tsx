@@ -1,5 +1,5 @@
 import { Menu } from 'antd';
-import { Logo, StyledHeader, StyledInnerHeader } from './styles/Header.style';
+import { Logo, StyledHeader, StyledInnerHeader } from './styles/Header.styled';
 
 const Header = () => {
   return (

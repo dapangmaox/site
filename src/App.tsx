@@ -1,7 +1,7 @@
 import './App.less';
 import { Footer } from './components/Footer';
 import Header from './components/Header';
-import { Container } from './components/styles/Container.style';
+import { Container } from './components/styles/Container.styled';
 import { ArticleList } from './pages/ArticleList';
 
 function App() {

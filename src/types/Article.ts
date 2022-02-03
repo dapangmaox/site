@@ -17,7 +17,9 @@ export interface Article {
 
   tags: Tag[];
 
-  created: Date;
+  created: string;
 
-  updated: Date;
+  updated: string;
+
+  times: number;
 }

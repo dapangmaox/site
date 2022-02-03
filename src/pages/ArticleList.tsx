@@ -1,38 +1,43 @@
 import { Menu } from 'antd';
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { ArticleCard } from '../components/ArticleCard';
+import SidePanel from '../components/SidePanel';
+import {
+  ArticleContainer,
+  ArticleContent,
+  StyledArticleList,
+} from '../components/styles/ArticleList.styled';
+import { Category } from '../types';
 import { Article } from '../types/Article';
 import { http } from '../utils/http';
 
 export interface ArticleListProps {}
 
 export const ArticleList: React.FC<ArticleListProps> = () => {
+  const [category, setCategory] = useState<Category[]>([]);
   const [articleList, setArticleList] = useState<Article[]>([]);
+
   useEffect(() => {
     http('article').then((data) => setArticleList(data.data));
+    http('category').then((data) => setCategory(data.data));
   }, []);
+
   return (
     <StyledArticleList>
-      <div>
-        <Menu mode={'horizontal'}>
-          <Menu.Item key={'推荐'}>推荐</Menu.Item>
-          <Menu.Item key={'前端'}>前端</Menu.Item>
-          <Menu.Item key={'后端'}>后端</Menu.Item>
+      <ArticleContainer>
+        <Menu selectedKeys={['0']} mode={'horizontal'}>
+          <Menu.Item key={'0'}>推荐</Menu.Item>
+          {category?.map((category) => (
+            <Menu.Item key={category.id}>{category.value}</Menu.Item>
+          ))}
         </Menu>
-        <div></div>
-        {articleList?.map((article) => (
-          <ArticleCard key={article.id} {...article} />
-        ))}
-      </div>
-      <aside>
-        <h1>公众号</h1>
-        <h1>热门推荐</h1>
-      </aside>
+        <ArticleContent>
+          {articleList?.map((article) => (
+            <ArticleCard key={article.id} {...article} />
+          ))}
+        </ArticleContent>
+      </ArticleContainer>
+      <SidePanel></SidePanel>
     </StyledArticleList>
   );
 };
-
-const StyledArticleList = styled.div`
-  margin-top: 10px;
-`;
