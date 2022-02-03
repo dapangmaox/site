@@ -1,10 +1,16 @@
-import { StyledSidePanel } from './styles/SidePanel.styled';
+import { Space, Typography } from 'antd';
+import account from '../images/public_account.png';
+import { RecommendArticles, StyledSidePanel } from './styles/SidePanel.styled';
 
 const SidePanel = () => {
   return (
     <StyledSidePanel>
-      <h1>公众号</h1>
-      <h1>热门推荐</h1>
+      <Space direction={'vertical'}>
+        <img style={{ width: '360px' }} alt='' src={account} />
+        <RecommendArticles>
+          <Typography.Title level={5}>热门推荐</Typography.Title>
+        </RecommendArticles>
+      </Space>
     </StyledSidePanel>
   );
 };
