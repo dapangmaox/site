@@ -6,6 +6,7 @@ import {
 import { Typography } from 'antd';
 import dayjs from 'dayjs';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Article } from '../types/Article';
 
@@ -23,7 +24,9 @@ export const ArticleCard: React.FC<Article> = ({
 }) => {
   return (
     <StyledArticleCard>
-      <Title level={5}>{title}</Title>
+      <Link to={`blog/${id}`}>
+        <Title level={5}>{title}</Title>
+      </Link>
       <Typography.Paragraph ellipsis={{ rows: 2 }}>
         {contents}
       </Typography.Paragraph>

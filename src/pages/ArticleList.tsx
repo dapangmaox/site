@@ -3,10 +3,10 @@ import React, { useEffect, useState } from 'react';
 import { ArticleCard } from '../components/ArticleCard';
 import SidePanel from '../components/SidePanel';
 import {
-  ArticleContainer,
   ArticleContent,
   StyledArticleList,
 } from '../components/styles/ArticleList.styled';
+import { ContentContainer } from '../components/styles/Container.styled';
 import { Category } from '../types';
 import { Article } from '../types/Article';
 import { http } from '../utils/http';
@@ -24,7 +24,7 @@ export const ArticleList: React.FC<ArticleListProps> = () => {
 
   return (
     <StyledArticleList>
-      <ArticleContainer>
+      <ContentContainer>
         <Menu selectedKeys={['0']} mode={'horizontal'}>
           <Menu.Item key={'0'}>推荐</Menu.Item>
           {category?.map((category) => (
@@ -36,7 +36,7 @@ export const ArticleList: React.FC<ArticleListProps> = () => {
             <ArticleCard key={article.id} {...article} />
           ))}
         </ArticleContent>
-      </ArticleContainer>
+      </ContentContainer>
       <SidePanel></SidePanel>
     </StyledArticleList>
   );
