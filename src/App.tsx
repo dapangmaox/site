@@ -1,9 +1,19 @@
-import React from 'react';
 import './App.less';
-import { Button } from 'antd';
+import { Footer } from './components/Footer';
+import Header from './components/Header';
+import { Container } from './components/styles/Container.style';
+import { ArticleList } from './pages/ArticleList';
 
 function App() {
-  return <Button type={'primary'}>Button</Button>;
+  return (
+    <>
+      <Header />
+      <Container>
+        <ArticleList />
+      </Container>
+      <Footer />
+    </>
+  );
 }
 
 export default App;
