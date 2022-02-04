@@ -1,24 +1,19 @@
+import { Tag, Typography } from 'antd';
+import dayjs from 'dayjs';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Article } from '../types';
-import { http } from '../utils/http';
 import ReactMarkdown from 'react-markdown';
+import { useParams } from 'react-router-dom';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import styled from 'styled-components';
+import SidePanel from '../components/SidePanel';
+import { ContentContainer } from '../components/styles/ArticleDetail.styled';
 import {
   FlexContainer,
   MainContainer,
 } from '../components/styles/Container.styled';
-import SidePanel from '../components/SidePanel';
-import { ContentContainer } from '../components/styles/ArticleDetail.styled';
-import { Tag, Typography } from 'antd';
-import {
-  UserOutlined,
-  FieldTimeOutlined,
-  EyeOutlined,
-} from '@ant-design/icons';
-import dayjs from 'dayjs';
-import styled from 'styled-components';
+import { Article } from '../types';
+import { http } from '../utils/http';
 
 export const ArticleDetail: React.FC = () => {
   const { id } = useParams();
@@ -85,6 +80,10 @@ export const ArticleDetail: React.FC = () => {
 const MetaContainer = styled.div`
   display: flex;
   flex-direction: column;
+
+  span {
+    margin-right: 10px;
+  }
 `;
 
 const Author = styled.span`
