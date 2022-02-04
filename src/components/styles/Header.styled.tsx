@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const StyledHeader = styled.div`
@@ -21,13 +22,17 @@ export const StyledInnerHeader = styled.div`
   }
 `;
 
-export const Logo = styled.a`
+export const StyledLink = styled(Link)`
   height: 64px;
-  overflow: hidden;
   color: #000000d9;
   font-weight: 700;
   font-size: 18px;
   line-height: 64px;
   white-space: nowrap;
   text-decoration: none;
+
+  img {
+    height: 32px;
+    margin-right: 12px;
+  }
 `;
