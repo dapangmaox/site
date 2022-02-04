@@ -5,8 +5,13 @@ export const Container = styled.div`
   margin: 0 auto;
 `;
 
-export const ContentContainer = styled.div`
+export const MainContainer = styled.div`
   margin-right: 20px;
   background-color: #fff;
   width: 900px;
+  padding: 0 5px;
+`;
+
+export const FlexContainer = styled.div`
+  display: flex;
 `;

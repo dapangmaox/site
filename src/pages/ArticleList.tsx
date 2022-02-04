@@ -6,7 +6,7 @@ import {
   ArticleContent,
   StyledArticleList,
 } from '../components/styles/ArticleList.styled';
-import { ContentContainer } from '../components/styles/Container.styled';
+import { MainContainer } from '../components/styles/Container.styled';
 import { Category } from '../types';
 import { Article } from '../types/Article';
 import { http } from '../utils/http';
@@ -24,7 +24,7 @@ export const ArticleList: React.FC<ArticleListProps> = () => {
 
   return (
     <StyledArticleList>
-      <ContentContainer>
+      <MainContainer>
         <Menu selectedKeys={['0']} mode={'horizontal'}>
           <Menu.Item key={'0'}>推荐</Menu.Item>
           {category?.map((category) => (
@@ -36,7 +36,7 @@ export const ArticleList: React.FC<ArticleListProps> = () => {
             <ArticleCard key={article.id} {...article} />
           ))}
         </ArticleContent>
-      </ContentContainer>
+      </MainContainer>
       <SidePanel></SidePanel>
     </StyledArticleList>
   );

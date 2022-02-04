@@ -5,8 +5,20 @@ import { http } from '../utils/http';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { ContentContainer } from '../components/styles/Container.styled';
+import {
+  FlexContainer,
+  MainContainer,
+} from '../components/styles/Container.styled';
 import SidePanel from '../components/SidePanel';
+import { ContentContainer } from '../components/styles/ArticleDetail.styled';
+import { Tag, Typography } from 'antd';
+import {
+  UserOutlined,
+  FieldTimeOutlined,
+  EyeOutlined,
+} from '@ant-design/icons';
+import dayjs from 'dayjs';
+import styled from 'styled-components';
 
 export const ArticleDetail: React.FC = () => {
   const { id } = useParams();
@@ -19,33 +31,63 @@ export const ArticleDetail: React.FC = () => {
   return (
     <>
       {article && (
-        <div style={{ display: 'flex', padding: '10px' }}>
-          <ContentContainer>
-            <ReactMarkdown
-              children={article.contents}
-              components={{
-                code({ node, inline, className, children, ...props }) {
-                  const match = /language-(\w+)/.exec(className || '');
-                  return !inline && match ? (
-                    <SyntaxHighlighter
-                      children={String(children).replace(/\n$/, '')}
-                      style={prism}
-                      language={match[1]}
-                      PreTag='div'
-                      {...props}
-                    />
-                  ) : (
-                    <code className={className} {...props}>
-                      {children}
-                    </code>
-                  );
-                },
-              }}
-            />
-          </ContentContainer>
+        <FlexContainer>
+          <MainContainer>
+            <ContentContainer>
+              <Typography.Title level={2}>{article.title}</Typography.Title>
+              <MetaContainer>
+                <div style={{ marginBottom: '20px' }}>
+                  {article.tags?.map((tag) => (
+                    <Tag key={tag.id}>{tag.value}</Tag>
+                  ))}
+                </div>
+                <Author>{article.author}</Author>
+                <FlexContainer
+                  style={{ marginBottom: '20px', color: '#909090' }}
+                >
+                  <span>{dayjs(article.created).format('YYYY-MM-DD')}</span>
+                  <span>
+                    阅读：
+                    {article.times || 0}
+                  </span>
+                </FlexContainer>
+              </MetaContainer>
+              <ReactMarkdown
+                children={article.contents}
+                components={{
+                  code({ node, inline, className, children, ...props }) {
+                    const match = /language-(\w+)/.exec(className || '');
+                    return !inline && match ? (
+                      <SyntaxHighlighter
+                        children={String(children).replace(/\n$/, '')}
+                        style={prism}
+                        language={match[1]}
+                        PreTag='div'
+                        {...props}
+                      />
+                    ) : (
+                      <code className={className} {...props}>
+                        {children}
+                      </code>
+                    );
+                  },
+                }}
+              />
+            </ContentContainer>
+          </MainContainer>
           <SidePanel></SidePanel>
-        </div>
+        </FlexContainer>
       )}
     </>
   );
 };
+
+const MetaContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Author = styled.span`
+  font-size: 16px;
+  font-weight: 500;
+`;
