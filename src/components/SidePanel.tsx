@@ -10,6 +10,9 @@ const SidePanel = () => {
         <RecommendArticles>
           <Typography.Title level={5}>热门推荐</Typography.Title>
         </RecommendArticles>
+        <RecommendArticles>
+          <Typography.Title level={5}>标签</Typography.Title>
+        </RecommendArticles>
       </Space>
     </StyledSidePanel>
   );

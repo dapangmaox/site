@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.less';
 import { Footer } from './components/Footer';
 import Header from './components/Header';
@@ -12,8 +12,9 @@ function App() {
       <Header />
       <Container>
         <Routes>
-          <Route path='/' element={<ArticleList />} />
+          <Route path='/blog' element={<ArticleList />} />
           <Route path='blog/:id' element={<ArticleDetail />} />
+          <Route path='*' element={<Navigate to='/blog' replace />} />
         </Routes>
       </Container>
       <Footer />

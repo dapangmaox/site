@@ -10,8 +10,11 @@ export const StyledHeader = styled.div`
 export const StyledInnerHeader = styled.div`
   position: relative;
   z-index: 10;
-  max-width: 1280px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: calc(1140px + 8vw);
+  padding-left: 4vw;
+  padding-right: 4vw;
   display: flex;
   justify-content: space-between;
   height: 64px;
@@ -30,6 +33,15 @@ export const StyledLink = styled(Link)`
   line-height: 64px;
   white-space: nowrap;
   text-decoration: none;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+    color: inherit;
+  }
 
   img {
     height: 32px;

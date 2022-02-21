@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  max-width: 1280px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: calc(1140px + 8vw);
+  padding-left: 4vw;
+  padding-right: 4vw;
+  width: 100%;
 `;
 
 export const MainContainer = styled.div`
